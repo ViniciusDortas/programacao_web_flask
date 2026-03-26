@@ -1,14 +1,22 @@
-from flask import Flask
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
+lista_usuarios = ["João", "Pedro", "Fernanda", "Alessandro", "Maria"]
+
 @app.route("/")
 def home():
-    return "<h1>Hello, World!</h1><p>meu primeiro site</p>"
+    return render_template("home.html")
+
 
 @app.route("/contato")
 def contato():
-    return "Qualquer dúvida mande um e-mail para suporte@faculdade.com.br"
+    return render_template("contato.html")
+
+
+@app.route("/usuarios")
+def usuarios():
+    return render_template("usuarios.html", lista_usuarios=lista_usuarios)
 
 
 if __name__ == "__main__":
